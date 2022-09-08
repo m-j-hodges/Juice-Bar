@@ -1,0 +1,12 @@
+<br>
+<h2>Blogs</h2>
+<br>
+{{#each Blogs as |blog|}}
+<div class="card" style="width: 40rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{blog.title}}</h5>
+    <h6>Date posted: {{blog.date}}</h6>
+    <p class="card-text">{{blog.content}}</p>
+  </div>
+</div>
+{{/each}}
