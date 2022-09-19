@@ -30,7 +30,7 @@
       <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="true" class="dropdown-toggle">Home</a>
       <ul class="collapse list-unstyled" id="homeSubmenu">
         <li>
-          <a href="#">Sign Up</a>
+          <a href="/signup">Sign Up</a>
         </li>
         
         {{#if loggedIn}}
@@ -38,8 +38,7 @@
           <a href="#" id="logoutBtn">Logout</a>
         </li>
         {{else}}
-        <li>
-          <a href="#">Login</a>
+          <a href="/login">Login</a>
         </li>
         {{/if}}
       </ul>
@@ -95,7 +94,7 @@
               {{/if}}
               {{#if loggedIn}}
               <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
+                <a class="nav-link" href="#" id="logoutNavbar">Logout</a>
               </li>
               {{else}}
               <li class="nav-item">
@@ -126,9 +125,7 @@
     
  
 
-{{#if loggedIn}}
-<script src="/js/logout.js"></script>
-{{/if}}
+
  <!-- jQuery CDN - Slim version (=without AJAX) -->
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
  <!-- Popper.JS -->
@@ -138,7 +135,9 @@
  <script src="/javascript.js"></script>
 
  <script src="/js/login.js"></script>
-
+{{#if loggedIn}}
+<script src="/js/logout.js"></script>
+{{/if}}
  {{#if signUp}}
  <script src="/js/signup.js"></script>
  {{/if}}

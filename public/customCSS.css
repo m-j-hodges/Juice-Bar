@@ -6,6 +6,8 @@ h1 {
 input {
   width: 400px !important;
   display: inline !important;
+  position: absolute;
+  left: 500px;
 }
 .card:hover {
   background-color: #E2EDF7;
@@ -15,6 +17,18 @@ input {
 
 h2 {
   font-size: 44px;
+}
+
+#submitBtn {
+  position: absolute;
+  left: 500px; 
+
+}
+
+#loginSubmit {
+  position: absolute;
+  left: 500px;
+
 }
 
 .wrapper {

@@ -1,6 +1,7 @@
 const router = require('express').Router();
 const User = require('../../models/User');
 const bcrypt = require('bcrypt')
+const Blog = require('../../models/Blog')
 
 //user wants to create an account
 router.post('/', async (req,res) => {
@@ -11,7 +12,7 @@ router.post('/', async (req,res) => {
     console.log(createUser)
     req.session.save(() => {
       req.session.loggedIn = true;
-    res.json(createUser)
+    res.status(200).json({loggedIn: req.session.loggedIn})
     })
    }
   }
@@ -47,13 +48,30 @@ router.post('/create', async (req, res) => {
     email: req.body.email,
   });
   if(createUser) {
-    res.json({message: `User account has been created for ${req.body.username}`})
+    const getBlogs = await Blog.findAll();
+  const Blogs = getBlogs.map((blog) =>
+      blog.get({ plain: true }))
+    req.session.save(() => {
+      req.session.loggedIn = true;
+      res.render('Blogs', {Blogs, loggedIn: req.session.loggedIn})
+    })
 
   } else {
     res.json({message: 'There was an error creating your user. Please provide a username, email, and password.'})
   }
 
 })
+
+router.post('/logout', (req,res) => {
+  if(req.session.loggedIn) {
+    req.session.destroy(()=> {
+      res.status(204).json({body:{message:"&#9989; You have successfully been logged out."}});
+
+    })
+
+  } else { res.status(404).json({message: "There was a problem logging you out."}).end();}
+
+});
 
 
 module.exports = router;

@@ -1,0 +1,27 @@
+<h3 id="currBlogTitle">Blog Title:{{oneBlog.title}}</h3>
+<br>
+<div class="card">
+  <div class="card-body">
+    <h6 id='blogId' data-id:`{{oneBlog.id}}`>Date: {{oneBlog.date}}</h6>
+    <div class="mb-3">
+  <label for="formTextArea" class="form-label">Blog Post:</label>
+  <textarea class="form-control" id="formTextArea" rows="3" readonly>{{oneBlog.content}}</textarea>
+</div>
+    
+    </textarea>
+  </div>
+{{#each listComments as |comment|}}
+<form>
+<div class='form-group'>
+  <label for=`Blogcomment{{comment.id}}`>{{comment.creator}}</label>
+  <h6>date: {{comment.date}}</h6>
+  <textarea class='form-control' id=`Blogcomment{{comment.id}}` rows='3'>{{comment.content}}</textarea>
+</div>
+<button class='btn btn-primary' type='submit' id='commentSubmit'>submit</button>
+</form>
+{{/each}}
+<div class="card">
+<div class="card-body">
+<h6 id="leaveComment"> leave a comment!</h6>
+</div>
+</div>
