@@ -6,7 +6,7 @@ const sequelize = require('./config/connection')
 const app = express();
 const PORT = process.env.PORT || 3001;
 const helpers = require('./utils/helpers');
-
+require('dotenv').config()
 
 
 
@@ -17,7 +17,7 @@ const routes = require('./routes')
 const sess = {
   secret: 'super secret secrets',
   cookie: {
-    maxAge: 1000*60*30,
+    maxAge: 1000*60*15,
   },
   resave: false,
   saveUninitialized: true,

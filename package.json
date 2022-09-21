@@ -1,0 +1,38 @@
+{
+  "name": "juice-bar",
+  "version": "1.0.0",
+  "description": "a simple tech blogging website",
+  "main": "server.js",
+  "scripts": {
+    "test": "npm jest",
+    "start": "node server.js",
+    "seed": "node seeds/BlogSeeds.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m-j-hodges/Juice-Bar.git"
+  },
+  "keywords": [
+    "NodeJS",
+    "sequelize",
+    "handlebars"
+  ],
+  "author": "Matt Hodges",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/m-j-hodges/Juice-Bar/issues"
+  },
+  "homepage": "https://github.com/m-j-hodges/Juice-Bar#readme",
+  "dependencies": {
+    "bcrypt": "^5.0.1",
+    "connect-session-sequelize": "^7.1.5",
+    "dotenv": "^16.0.2",
+    "express": "^4.18.1",
+    "express-handlebars": "^6.0.6",
+    "express-session": "^1.17.3",
+    "handlebars": "^4.7.7",
+    "moment": "^2.29.4",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.3.5"
+  }
+}

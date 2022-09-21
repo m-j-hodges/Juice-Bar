@@ -18,7 +18,7 @@ Blog.init({
     allowNull: false,
     validate: {
       isDate: true,
-    }
+    },
   },
   title: {
     type: DataTypes.STRING,

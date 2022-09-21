@@ -32,6 +32,7 @@ router.post('/login', async (req,res) => {
     if(comparePass == true) {
       req.session.save(() => {
         req.session.loggedIn = true;
+        req.session.user = req.body.username;
         res.status(200).json({message: 'You are now logged in!'}).end()
       })
     } else {res.render('login', {message: 'you must be logged in to view this page.'}) }

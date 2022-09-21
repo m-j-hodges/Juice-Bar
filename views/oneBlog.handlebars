@@ -2,7 +2,7 @@
 <br>
 <div class="card">
   <div class="card-body">
-    <h6 id='blogId' data-id:`{{oneBlog.id}}`>Date: {{oneBlog.date}}</h6>
+    <h6 id='blogId' data-number=`{{oneBlog.id}}`>Date: {{oneBlog.date}}</h6>
     <div class="mb-3">
   <label for="formTextArea" class="form-label">Blog Post:</label>
   <textarea class="form-control" id="formTextArea" rows="3" readonly>{{oneBlog.content}}</textarea>
@@ -10,18 +10,34 @@
     
     </textarea>
   </div>
-{{#each listComments as |comment|}}
-<form>
-<div class='form-group'>
-  <label for=`Blogcomment{{comment.id}}`>{{comment.creator}}</label>
-  <h6>date: {{comment.date}}</h6>
-  <textarea class='form-control' id=`Blogcomment{{comment.id}}` rows='3'>{{comment.content}}</textarea>
+  </div>
+{{#each results as |comment|}}
+<div class="card">
+  <div class="card-body">
+    <h6 >author: {{comment.creator}}</h6>
+    <h6 >date: {{comment.date}}</h6>
+    <div class="mb-3">
+  <label for="formTextArea" class="form-label">comment:</label>
+  <textarea class="form-control" id="formTextArea" rows="3" readonly>{{comment.content}}</textarea>
 </div>
-<button class='btn btn-primary' type='submit' id='commentSubmit'>submit</button>
-</form>
+</div>
+</div>
 {{/each}}
 <div class="card">
 <div class="card-body">
 <h6 id="leaveComment"> leave a comment!</h6>
+<form id="commentForm">
+<div class='form-group'>
+  <label for='commentInput'></label>
+  <textarea class='form-control' id='commentInput' rows='3'></textarea>
+</div>
+<div class="input-group mb-3">
+  <span class="input-group-text">Username:</span>
+  <div class="form-floating">
+    <input type="text" class="form-control" id="userNameInput" placeholder="Username">
+  </div>
+</div>
+<button type="button" id="commentSubmit" class="btn btn-primary">submit</button>
+</form>
 </div>
 </div>

@@ -5,6 +5,7 @@ const Blog = require("../../models/Blog")
 
 const moment = require('moment');
 const comment = require('../../models/Comments');
+const { User } = require('../../models');
 
 
 router.get('/', async(req,res) => {
@@ -44,19 +45,37 @@ else {
 
 })
 
-router.get('/blog/:id', async (req,res) => {
+router.get('/oneBlog/:id', async (req,res) => {
 
 try{
 if (req.params.id) { 
 const findBlog = await Blog.findByPk(req.params.id)
 const listComments = await comment.findAll({where: {
   blogs_id: req.params.id
-}})
+},
+raw:true,
+nest: true,
+})
+
+const newComments = listComments.map( async(userComment) => {
+  const newUser = await User.findOne({where: {id: userComment.creator},
+  raw:true,
+  nest:true,})
+    const userNameCreator = newUser.user_name
+    return {...userComment, creator: userNameCreator}
+  })
+
+const results = await Promise.all(newComments)
+
+
+
 
 const oneBlog = findBlog.get({ plain: true})
+oneBlog.date = oneBlog.date.toDateString()
 
 // res.json({oneBlog})
-res.render('oneBlog', {oneBlog, listComments})
+res.render('oneBlog', {user: req.session.username,loggedIn: req.session.loggedIn,oneBlog, results})
+
 } else{
   res.json({message: `Please provide a valid blog ID.`})
 }

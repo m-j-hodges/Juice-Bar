@@ -1,7 +1,7 @@
 const {Model, DataTypes, Sequelize} = require('sequelize')
 const sequelize = require('../config/connection')
 const bcrypt = require('bcrypt')
-const { now } = require('moment')
+
 
 class comment extends Model{}
 
@@ -28,7 +28,7 @@ comment.init({
     references: {
       model: 'users',
       key: 'id'
-    }
+    },
   },
   blogs_id: {
     type: DataTypes.INTEGER,
@@ -36,8 +36,8 @@ comment.init({
     references: {
       model: 'blogs',
       key: 'id'
-    }
-  }
+    },
+  },
 
 },
 {
