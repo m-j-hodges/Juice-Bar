@@ -65,7 +65,7 @@ if(responseMessage) {
   successAlert.innerText = `Your comment has been saved!`
   commentBtn.after(successAlert)
   setTimeout(removeMessage, 4000)
-  reloadPage()
+  setTimeout(reloadPage,4000)
 }
 
 
