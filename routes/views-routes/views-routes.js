@@ -71,7 +71,7 @@ const results = await Promise.all(newComments)
 
 
 const oneBlog = findBlog.get({ plain: true})
-oneBlog.date = oneBlog.date.toDateString()
+oneBlog.date = new Date(oneBlog.date).toDateString()
 
 // res.json({oneBlog})
 res.render('oneBlog', {user: req.session.username,loggedIn: req.session.loggedIn,oneBlog, results})
